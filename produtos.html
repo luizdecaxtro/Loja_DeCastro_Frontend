@@ -1,36 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produtos - Loja DeCastro</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="wrap">
-      <div class="brand"><img src="assets/img/logo.svg" alt="logo"><span>Loja DeCastro</span></div>
-      <nav class="nav">
-        <a href="index.html">Início</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="carrinho.html">Carrinho</a>
-        <a href="contato.html">Contato</a>
-        <a href="admin.html">Admin</a>
-      </nav>
-    </div>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Loja DeCastro</div>
+      <ul class="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="produtos.html" class="active">Produtos</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="container">
-    <h1>Produtos</h1>
-    <div class="searchbar">
-      <input class="input" id="q" placeholder="Buscar produto...">
-      <select id="filter-category"></select>
+    <h1>Nossos Produtos</h1>
+    <div class="produtos-grid">
+      
+      <!-- Produto 1 -->
+      <div class="produto-card">
+        <img src="img/produto1.jpg" alt="Produto 1">
+        <h2>Curso Frontend</h2>
+        <p>Aprenda HTML, CSS e JavaScript do zero.</p>
+        <span class="preco">R$ 99,90</span>
+        <button class="btn">Adicionar ao Carrinho</button>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="produto-card">
+        <img src="img/produto2.jpg" alt="Produto 2">
+        <h2>Curso Backend</h2>
+        <p>Domine Node.js e APIs modernas.</p>
+        <span class="preco">R$ 129,90</span>
+        <button class="btn">Adicionar ao Carrinho</button>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="produto-card">
+        <img src="img/produto3.jpg" alt="Produto 3">
+        <h2>Curso Fullstack</h2>
+        <p>Torne-se um desenvolvedor completo.</p>
+        <span class="preco">R$ 199,90</span>
+        <button class="btn">Adicionar ao Carrinho</button>
+      </div>
+
     </div>
-    <div id="grid-products" class="grid"></div>
   </main>
 
-  <footer class="footer">© 2025 Loja DeCastro</footer>
-
-  <script type="module" src="js/products.js"></script>
+  <footer>
+    <p>&copy; 2025 Loja DeCastro</p>
+  </footer>
 </body>
 </html>
