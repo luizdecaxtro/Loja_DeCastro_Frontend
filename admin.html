@@ -1,71 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin - Loja DeCastro</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="wrap">
-      <div class="brand"><img src="assets/img/logo.svg" alt="logo"><span>Admin • Loja DeCastro</span></div>
-      <nav class="nav">
-        <a href="index.html">Início</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="carrinho.html">Carrinho</a>
-        <a href="admin.html">Admin</a>
-      </nav>
-    </div>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Loja DeCastro</div>
+      <ul class="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="admin.html" class="active">Admin</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="container">
-    <h1>Cadastro de produtos</h1>
-    <div class="banner" style="margin-bottom:16px">
-      <strong>Dica:</strong> Primeiro cadastre categorias (botão ao lado), depois selecione no produto.
-    </div>
+    <h1>Administração de Produtos</h1>
 
-    <form id="form-product">
-      <label>Nome</label>
-      <input class="input" name="name" required/>
+    <!-- Formulário -->
+    <form id="form-produto">
+      <label for="nome">Nome do Produto:</label>
+      <input type="text" id="nome" required>
 
-      <label>Descrição</label>
-      <input class="input" name="desc" />
+      <label for="preco">Preço:</label>
+      <input type="number" id="preco" step="0.01" required>
 
-      <label>Preço (R$)</label>
-      <input class="input" type="number" step="0.01" name="price" required/>
-
-      <div style="display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:end">
-        <div>
-          <label>Categoria</label>
-          <select class="input" id="category" name="category"></select>
-        </div>
-        <button type="button" id="btn-new-category" class="btn btn-ghost">+ Categoria</button>
-      </div>
-
-      <label>Estoque</label>
-      <input class="input" type="number" name="stock" value="0"/>
-
-      <label>Imagem</label>
-      <input class="input" id="image" type="file" accept="image/*"/>
-      <img id="preview" style="display:none; max-width:240px; margin-top:8px; border-radius:12px"/>
-
-      <label style="display:flex; gap:8px; align-items:center; margin-top:8px">
-        <input type="checkbox" name="active" checked>
-        <span>Ativo</span>
-      </label>
-
-      <div style="margin-top:14px; display:flex; gap:10px">
-        <button class="btn btn-primary" type="submit">Salvar produto</button>
-        <a class="btn btn-ghost" href="produtos.html">Ver loja</a>
-      </div>
+      <button type="submit" class="btn">Adicionar Produto</button>
     </form>
 
-    <h2 style="margin-top:28px">Produtos cadastrados</h2>
-    <div id="list-products"></div>
+    <!-- Lista -->
+    <h2>Produtos Cadastrados</h2>
+    <div id="lista-produtos"></div>
   </main>
-  <footer class="footer">Admin • Loja DeCastro</footer>
 
-  <script type="module" src="js/admin.js"></script>
+  <footer>
+    <p>&copy; 2025 Loja DeCastro</p>
+  </footer>
+
+  <script>
+    // Carrega produtos
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+    function atualizarLista() {
+      const lista = document.getElementById("lista-produtos");
+      lista.innerHTML = "";
+
+      if (produtos.length === 0) {
+        lista.innerHTML = "<p>Nenhum produto cadastrado.</p>";
+        return;
+      }
+
+      produtos.forEach((p, index) => {
+        lista.innerHTML += `
+          <div class="produto-card">
+            <h3>${p.nome}</h3>
+            <p>R$ ${p.preco.toFixed(2)}</p>
+            <button onclick="removerProduto(${index})" class="btn">Remover</button>
+          </div>
+        `;
+      });
+    }
+
+    // Adiciona produto
+    document.getElementById("form-produto").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const preco = parseFloat(document.getElementById("preco").value);
+
+      produtos.push({ nome, preco });
+      localStorage.setItem("produtos", JSON.stringify(produtos));
+
+      document.getElementById("form-produto").reset();
+      atualizarLista();
+    });
+
+    // Remove produto
+    function removerProduto(index) {
+      produtos.splice(index, 1);
+      localStorage.setItem("produtos", JSON.stringify(produtos));
+      atualizarLista();
+    }
+
+    atualizarLista();
+  </script>
 </body>
 </html>
