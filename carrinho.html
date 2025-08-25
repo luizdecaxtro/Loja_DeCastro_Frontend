@@ -1,39 +1,51 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Carrinho - Loja DeCastro</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header class="navbar">
-    <div class="wrap">
-      <div class="brand"><img src="assets/img/logo.svg" alt="logo"><span>Loja DeCastro</span></div>
-      <nav class="nav">
-        <a href="index.html">Início</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="carrinho.html">Carrinho</a>
-        <a href="contato.html">Contato</a>
-        <a href="admin.html">Admin</a>
-      </nav>
-    </div>
-  </header>
+/* Grid de produtos */
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
 
-  <main class="container">
-    <h1>Seu carrinho</h1>
-    <div id="cart-list" style="display:flex; flex-direction:column; gap:12px"></div>
-    <div class="banner" style="margin-top:14px; display:flex; align-items:center; justify-content:space-between">
-      <strong>Total:</strong>
-      <span id="cart-total">R$ 0,00</span>
-    </div>
-    <div style="margin-top:12px; display:flex; gap:10px">
-      <a href="produtos.html" class="btn btn-ghost">Continuar comprando</a>
-      <button id="btn-pay" class="btn btn-primary">Ir para pagamento</button>
-    </div>
-  </main>
+.produto-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
 
-  <footer class="footer">© 2025 Loja DeCastro</footer>
-  <script type="module" src="js/cart.js"></script>
-</body>
-</html>
+.produto-card:hover {
+  transform: translateY(-5px);
+}
+
+.produto-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.produto-card h2 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.produto-card .preco {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #d35400;
+}
+
+.produto-card .btn {
+  background: #ffcc00;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.produto-card .btn:hover {
+  background: #e6b800;
+}
