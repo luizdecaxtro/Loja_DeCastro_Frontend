@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loja DeCastro</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="wrap">
+      <div class="brand"><img src="assets/img/logo.svg" alt="logo"><span>Loja DeCastro</span></div>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="contato.html">Contato</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Produtos digitai$ que geram valor real</h1>
+        <p>Catálogo moderno, carrinho simples e pagamento Mercado Pago (em breve). Visual marrom com toques teal e âmbar.</p>
+        <div style="display:flex; gap:10px; margin-top:16px">
+          <a class="btn btn-primary" href="produtos.html">Explorar produtos</a>
+          <a class="btn btn-ghost" href="carrinho.html">Ver carrinho</a>
+        </div>
+      </div>
+      <div class="panel banner">
+        <strong>Como funciona?</strong>
+        <ol>
+          <li>Cadastre produtos no <em>Admin</em>.</li>
+          <li>Eles aparecem automaticamente em <em>Produtos</em>.</li>
+          <li>Cliente adiciona ao <em>Carrinho</em> e finaliza no checkout.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 style="margin:0 0 12px">Destaques</h2>
+      <div id="grid-demo" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Loja DeCastro</footer>
+
+  <script type="module">
+    import { ensureDemo, getProducts, money } from './js/store.js';
+    ensureDemo();
+    const grid = document.querySelector('#grid-demo');
+    const items = getProducts().slice(0,4);
+    grid.innerHTML = items.map(p=>`
+      <article class="card">
+        <div class="thumb">${p.image? `<img src="${p.image}" alt="">`:''}</div>
+        <div class="body">
+          <div class="badge">${p.category||'Produto'}</div>
+          <h3 class="title">${p.name}</h3>
+          <p class="muted">${p.desc||''}</p>
+          <div class="price">${money(p.price)}</div>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="produtos.html">Comprar</a>
+        </div>
+      </article>
+    `).join('');
+  </script>
+</body>
+</html>

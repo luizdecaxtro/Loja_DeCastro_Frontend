@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produtos - Loja DeCastro</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="wrap">
+      <div class="brand"><img src="assets/img/logo.svg" alt="logo"><span>Loja DeCastro</span></div>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="contato.html">Contato</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Produtos</h1>
+    <div class="searchbar">
+      <input class="input" id="q" placeholder="Buscar produto...">
+      <select id="filter-category"></select>
+    </div>
+    <div id="grid-products" class="grid"></div>
+  </main>
+
+  <footer class="footer">© 2025 Loja DeCastro</footer>
+
+  <script type="module" src="js/products.js"></script>
+</body>
+</html>

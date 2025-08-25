@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin - Loja DeCastro</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="wrap">
+      <div class="brand"><img src="assets/img/logo.svg" alt="logo"><span>Admin • Loja DeCastro</span></div>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Cadastro de produtos</h1>
+    <div class="banner" style="margin-bottom:16px">
+      <strong>Dica:</strong> Primeiro cadastre categorias (botão ao lado), depois selecione no produto.
+    </div>
+
+    <form id="form-product">
+      <label>Nome</label>
+      <input class="input" name="name" required/>
+
+      <label>Descrição</label>
+      <input class="input" name="desc" />
+
+      <label>Preço (R$)</label>
+      <input class="input" type="number" step="0.01" name="price" required/>
+
+      <div style="display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:end">
+        <div>
+          <label>Categoria</label>
+          <select class="input" id="category" name="category"></select>
+        </div>
+        <button type="button" id="btn-new-category" class="btn btn-ghost">+ Categoria</button>
+      </div>
+
+      <label>Estoque</label>
+      <input class="input" type="number" name="stock" value="0"/>
+
+      <label>Imagem</label>
+      <input class="input" id="image" type="file" accept="image/*"/>
+      <img id="preview" style="display:none; max-width:240px; margin-top:8px; border-radius:12px"/>
+
+      <label style="display:flex; gap:8px; align-items:center; margin-top:8px">
+        <input type="checkbox" name="active" checked>
+        <span>Ativo</span>
+      </label>
+
+      <div style="margin-top:14px; display:flex; gap:10px">
+        <button class="btn btn-primary" type="submit">Salvar produto</button>
+        <a class="btn btn-ghost" href="produtos.html">Ver loja</a>
+      </div>
+    </form>
+
+    <h2 style="margin-top:28px">Produtos cadastrados</h2>
+    <div id="list-products"></div>
+  </main>
+  <footer class="footer">Admin • Loja DeCastro</footer>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

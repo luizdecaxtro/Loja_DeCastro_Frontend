@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrinho - Loja DeCastro</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="wrap">
+      <div class="brand"><img src="assets/img/logo.svg" alt="logo"><span>Loja DeCastro</span></div>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="carrinho.html">Carrinho</a>
+        <a href="contato.html">Contato</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Seu carrinho</h1>
+    <div id="cart-list" style="display:flex; flex-direction:column; gap:12px"></div>
+    <div class="banner" style="margin-top:14px; display:flex; align-items:center; justify-content:space-between">
+      <strong>Total:</strong>
+      <span id="cart-total">R$ 0,00</span>
+    </div>
+    <div style="margin-top:12px; display:flex; gap:10px">
+      <a href="produtos.html" class="btn btn-ghost">Continuar comprando</a>
+      <button id="btn-pay" class="btn btn-primary">Ir para pagamento</button>
+    </div>
+  </main>
+
+  <footer class="footer">© 2025 Loja DeCastro</footer>
+  <script type="module" src="js/cart.js"></script>
+</body>
+</html>
