@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loja DeCastro</title>
+<link rel="stylesheet" href="css/style.css"><script src="https://sdk.mercadopago.com/js/v2"></script></head>
+<body>
+<header class="navbar"><div class="nav-inner">
+  <a class="brand" href="index.html"><div class="logo">DC</div><h1>Loja DeCastro</h1></a>
+  <nav class="nav-links">
+    <a href="index.html">Início</a><a href="produtos.html">Produtos</a><a href="contato.html">Contato</a>
+    <a class="pill" href="carrinho.html">🛒 <span data-cart-count>0</span></a>
+  </nav></div></header>
+
+<section class="section"><div class="container">
+  <h3 style="margin:0 0 14px">Seu Carrinho</h3>
+  <div data-cart-empty class="card"><div class="body"><p>O carrinho está vazio no momento.</p><a class="btn" href="produtos.html">Ver produtos</a></div></div>
+  <div data-cart-table class="hide">
+    <table class="table"><thead><tr><th>Produto</th><th>Preço</th><th>Qtd</th><th>Subtotal</th><th></th></tr></thead><tbody data-cart-body></tbody></table>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:16px;flex-wrap:wrap">
+      <strong>Total: <span data-cart-total>R$ 0,00</span></strong>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn warning" data-checkout>Ir para pagamento</button>
+        <div id="mp-wallet"></div>
+      </div>
+    </div>
+    <p style="color:#6b7280;margin-top:10px">Dica: salve sua Public Key em <code>localStorage.setItem('dc_mp_pk','SUA_PK')</code> e o <code>preferenceId</code> em <code>localStorage.setItem('dc_mp_preference_id','...')</code>.</p>
+  </div>
+</div></section>
+<script type="module" src="js/cart.js"></script>
+<script type="module" src="js/mp.js"></script>
+
+<footer class="footer"><div class="container"><div class="row"><div>© 2025 Loja DeCastro</div><div style="display:flex;gap:10px"><a href="admin.html" class="btn ghost">Admin</a><a href="https://wa.me/55000000000" class="btn ghost">WhatsApp</a></div></div></div></footer>
+<div class="toast hide"></div>
+<script type="module" src="js/main.js"></script>
+</body></html>

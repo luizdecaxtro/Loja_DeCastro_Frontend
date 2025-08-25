@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loja DeCastro</title>
+<link rel="stylesheet" href="css/style.css"></head>
+<body>
+<header class="navbar"><div class="nav-inner">
+  <a class="brand" href="index.html"><div class="logo">DC</div><h1>Loja DeCastro</h1></a>
+  <nav class="nav-links">
+    <a href="index.html">Início</a><a href="produtos.html">Produtos</a><a href="contato.html">Contato</a>
+    <a class="pill" href="carrinho.html">🛒 <span data-cart-count>0</span></a>
+  </nav></div></header>
+
+<section class="section"><div class="container" style="max-width:980px">
+  <h3>Criar nova página</h3>
+  <form data-page-form>
+    <label class="label">Título</label><input class="input" name="title" required>
+    <label class="label">Slug (ex: politicas)</label><input class="input" name="slug" placeholder="politicas" required>
+    <label class="label">HTML da página</label><textarea class="input" name="html" rows="10" required><h2>Nova página</h2><p>Seu conteúdo aqui.</p></textarea>
+    <div style="margin-top:14px"><button class="btn">Salvar</button></div>
+  </form>
+  <h3 style="margin-top:26px">Páginas já criadas</h3>
+  <div data-pages-list class="grid cols-2"></div>
+</div></section>
+<script type="module" src="js/pages.js"></script>
+
+<footer class="footer"><div class="container"><div class="row"><div>© 2025 Loja DeCastro</div><div style="display:flex;gap:10px"><a href="admin.html" class="btn ghost">Admin</a><a href="https://wa.me/55000000000" class="btn ghost">WhatsApp</a></div></div></div></footer>
+<div class="toast hide"></div>
+<script type="module" src="js/main.js"></script>
+</body></html>
