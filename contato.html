@@ -1,32 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contato - Loja DeCastro</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="wrap">
-      <div class="brand"><img src="assets/img/logo.svg" alt="logo"><span>Loja DeCastro</span></div>
-      <nav class="nav">
-        <a href="index.html">Início</a>
-        <a href="produtos.html">Produtos</a>
-        <a href="carrinho.html">Carrinho</a>
-        <a href="contato.html">Contato</a>
-        <a href="admin.html">Admin</a>
-      </nav>
-    </div>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Loja DeCastro</div>
+      <ul class="menu">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+        <li><a href="contato.html" class="active">Contato</a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="container">
-    <h1>Fale com a gente</h1>
-    <div class="banner">
-      <p>E-mail: contato@decastro.com.br</p>
-      <p>WhatsApp: (00) 00000-0000</p>
-    </div>
+    <h1>Entre em Contato</h1>
+    <p>Preencha o formulário abaixo para enviar sua mensagem.</p>
+
+    <!-- Formulário -->
+    <form id="form-contato">
+      <label for="nome">Seu Nome:</label>
+      <input type="text" id="nome" required>
+
+      <label for="email">Seu Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" rows="5" required></textarea>
+
+      <button type="submit" class="btn">Enviar</button>
+    </form>
+
+    <!-- Lista de mensagens -->
+    <h2>Mensagens Recebidas</h2>
+    <div id="lista-mensagens"></div>
   </main>
-  <footer class="footer">© 2025 Loja DeCastro</footer>
+
+  <footer>
+    <p>&copy; 2025 Loja DeCastro</p>
+  </footer>
+
+  <script>
+    // Carrega mensagens do localStorage
+    let mensagens = JSON.parse(localStorage.getItem("mensagens")) || [];
+
+    function atualizarMensagens() {
+      const lista = document.getElementById("lista-mensagens");
+      lista.innerHTML = "";
+
+      if (mensagens.length === 0) {
+        lista.innerHTML = "<p>Nenhuma mensagem recebida.</p>";
+        return;
+      }
+
+      mensagens.forEach((m, index) => {
+        lista.innerHTML += `
+          <div class="mensagem-card">
+            <p><strong>De:</strong> ${m.nome} (${m.email})</p>
+            <p>${m.mensagem}</p>
+            <button onclick="removerMensagem(${index})" class="btn">Remover</button>
+          </div>
+        `;
+      });
+    }
+
+    // Adiciona nova mensagem
+    document.getElementById("form-contato").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const mensagem = document.getElementById("mensagem").value;
+
+      mensagens.push({ nome, email, mensagem });
+      localStorage.setItem("mensagens", JSON.stringify(mensagens));
+
+      document.getElementById("form-contato").reset();
+      atualizarMensagens();
+      alert("Mensagem enviada com sucesso!");
+    });
+
+    // Remove mensagem
+    function removerMensagem(index) {
+      mensagens.splice(index, 1);
+      localStorage.setItem("mensagens", JSON.stringify(mensagens));
+      atualizarMensagens();
+    }
+
+    atualizarMensagens();
+  </script>
 </body>
 </html>
