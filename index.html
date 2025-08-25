@@ -3,34 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja DeCastro</title>
-  <!-- SDK do Mercado Pago -->
-  <script src="https://sdk.mercadopago.com/js/v2"></script>
+  <title>Loja De Castro - Produtos Digitais </title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Bem-vindo à Loja DeCastro</h1>
-  <button id="checkout-button">Comprar agora</button>
+  <header>
+    <h1>Loja De Castro - Produtos Digitais </h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="produtos.html">Produtos</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
 
+  <main>
+    <section class="produto">
+      <h2>Produto X</h2>
+      <p>Descrição do produto X.</p>
+      <p><strong>R$ 100,00</strong></p>
+      
+      <!-- Botão que inicia o checkout -->
+      <button id="checkout-btn">Comprar</button>
+      
+      <!-- Aqui será renderizado o checkout embutido -->
+      <div id="wallet_container"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Loja De Castro</p>
+  </footer>
+
+  <!-- SDK Mercado Pago -->
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
   <script>
-    // Inicializa o Mercado Pago com a sua PUBLIC KEY
-    const mp = new MercadoPago("APP_USR-d31c8e3a-1671-46ec-a730-eb4011a06e98", {
-      locale: "pt-BR"
-    });
+    // URL do backend (quando você publicar no Render/Railway/Heroku/etc.)
+    const BACKEND_URL = "https://loja-decastro-backend.onrender.com";
 
-    // Cria um checkout
-    document.getElementById("checkout-button").addEventListener("click", async () => {
-      const response = await fetch("https://SEU_PROJETO.vercel.app/api/create-preference", {
-        method: "POST",
-      });
+    // Instância do Mercado Pago com sua Public Key
+    const mp = new MercadoPago("APP_USR-d31c8e3a-1671-46ec-a730-eb4011a06e98", { locale: "pt-BR" });
 
-      const preference = await response.json();
+    document.getElementById("checkout-btn").addEventListener("click", async () => {
+      try {
+        // Cria a preferência de pagamento chamando o backend
+        const response = await fetch(`${BACKEND_URL}/create_preference`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: "Produto X",
+            quantity: 1,
+            price: 100
+          })
+        });
 
-      mp.checkout({
-        preference: {
-          id: preference.id
-        },
-        autoOpen: true,
-      });
+        const preference = await response.json();
+
+        // Renderiza o checkout embutido dentro da div "wallet_container"
+        mp.checkout({
+          preference: {
+            id: preference.id
+          },
+          render: {
+            container: "#wallet_container",
+            label: "Pague com Mercado Pago"
+          }
+        });
+      } catch (error) {
+        console.error("Erro ao iniciar pagamento:", error);
+        alert("Erro ao iniciar pagamento. Tente novamente.");
+      }
     });
   </script>
 </body>
