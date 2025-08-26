@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja DeCastro — Início</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="menu">
+  <div class="container row">
+    <div class="logo">
+      <div class="badge"><span></span></div>Loja DeCastro
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-nav="index">Início</a></li>
+        <li><a href="produtos.html" data-nav="produtos">Produtos</a></li>
+        <li><a href="carrinho.html" data-nav="carrinho">Carrinho <span id="nav-count"></span></a></li>
+        <li><a href="contato.html" data-nav="contato">Contato</a></li>
+        <li><a href="admin.html" data-nav="admin">Admin</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="container">
+
+<section class="hero">
+  <div>
+    <h1>Produtos digitais que geram valor real</h1>
+    <p>Catálogo simples, carrinho rápido e checkout em breve (Pix + Cartão).</p>
+    <a href="produtos.html" class="btn">Ver produtos</a>
+  </div>
+</section>
+<section>
+  <div class="section-title"><h2>Produtos em destaque</h2><a href="produtos.html" class="btn secondary">Ver todos</a></div>
+  <div id="destacados" class="grid"></div>
+</section>
+
+</main>
+<footer class="container">© 2025 Loja DeCastro — todos os direitos reservados.</footer>
+  <script src="js/index.js"></script>
+<script>
+document.querySelectorAll('a[data-nav]').forEach(a=>{
+  if(location.pathname.endsWith(a.getAttribute('data-nav')+'.html') || 
+     (location.pathname.endsWith('/') && a.getAttribute('data-nav')==='index')) a.classList.add('active');
+});
+</script>
+<script src="js/common.js"></script>
+</body></html>
