@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="480" viewBox="0 0 640 480">
-  <rect width="640" height="480" fill="#f6efe9"/>
-  <rect x="120" y="60" width="400" height="360" rx="20" fill="#6d4c41"/>
-  <rect x="140" y="80" width="360" height="320" rx="12" fill="#fff"/>
-  <text x="200" y="240" font-size="48" font-family="Arial" fill="#6d4c41">E-BOOK</text>
-</svg>
