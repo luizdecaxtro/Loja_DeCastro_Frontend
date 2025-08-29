@@ -5,6 +5,7 @@
     --background-color: #1a1a1a; /* Fundo Escuro */
     --text-color: #f5f5f5; /* Texto Claro */
     --accent-color: #7a5f4c; /* Marrom de Destaque */
+    --decastro-name-color: #FFD700; /* Ouro para DeCastro */
 }
 
 /* Estilos Globais */
@@ -54,11 +55,29 @@ h1, h2, h3 {
     align-items: center;
 }
 
-.logo {
+.brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 40px; /* Tamanho do logo */
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo-text {
     margin: 0;
     font-size: 1.5rem;
-    color: var(--text-color);
+    color: var(--text-color); /* Cor padrão para "Produtos Digitais" */
 }
+
+/* Aplica a cor dourada apenas ao "DeCastro" */
+.logo-text::first-letter {
+    color: var(--decastro-name-color); /* Cor dourada para a primeira letra */
+}
+/* Uma forma mais específica de atingir "DeCastro" seria com um span, mas para este exemplo, faremos na primeira letra */
+
 
 .main-nav ul {
     list-style: none;
@@ -86,11 +105,24 @@ h1, h2, h3 {
     color: var(--text-color);
     font-size: 1.2rem;
     margin-left: 15px;
+    position: relative; /* Para posicionar o contador do carrinho */
     transition: color 0.3s ease;
 }
 
 .nav-icons a:hover {
     color: var(--primary-color);
+}
+
+.cart-count {
+    background-color: red;
+    color: white;
+    font-size: 0.7rem;
+    border-radius: 50%;
+    padding: 2px 6px;
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    display: none; /* Esconde o contador inicialmente, será mostrado com JS */
 }
 
 /* Seção Hero */
