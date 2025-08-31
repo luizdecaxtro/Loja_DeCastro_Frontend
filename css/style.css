@@ -1,0 +1,52 @@
+/* Paleta de Cores */
+:root {
+    --primary-color: #5C4033; /* Marrom Principal */
+    --secondary-color: #333; /* Preto-quase-preto para texto */
+    --background-color: #1a1a1a; /* Fundo Escuro */
+    --text-color: #f5f5f5; /* Texto Claro */
+    --accent-color: #7a5f4c; /* Marrom de Destaque */
+    --decastro-name-color: #FFD700; /* Dourado para DeCastro */
+}
+
+/* Estilos Globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+}
+
+/* Cabeçalho (Header) */
+.main-header {
+    background-color: var(--secondary-color);
+    padding: 20px 0;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* ... restante do código CSS (omiti para brevidade, mas você pode usar o que já tem) ... */
