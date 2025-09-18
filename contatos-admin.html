@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens de Contato | DeCastro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos do corpo */
+        body {
+            background-color: #3e3e3e;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilos do cabeçalho */
+        .cabecalho {
+            background-color: #2e2e2e;
+            color: #ffb703;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-navegacao a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 2rem;
+        }
+
+        /* Estilos da seção de contatos */
+        .secao-contatos {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .secao-contatos h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ffb703;
+        }
+        .container-contatos {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #4a4a4a;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        /* Estilos da tabela de contatos */
+        .tabela-contatos {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        .tabela-contatos th, .tabela-contatos td {
+            border: 1px solid #666;
+            padding: 1rem;
+            text-align: left;
+            word-wrap: break-word; /* Para garantir que o texto longo não quebre o layout */
+        }
+        .tabela-contatos th {
+            background-color: #555;
+            color: #ffb703;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-container">
+            <img src="logotipo2.jpg" alt="Logotipo DeCastro Produtos Digitais">
+        </div>
+        
+        <nav class="menu-navegacao">
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="contato.html">Contato</a>
+            <a href="administracao.html">Administração</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="secao-contatos">
+            <h2>Mensagens de Contato</h2>
+            <div class="container-contatos">
+                <table class="tabela-contatos">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Assunto</th> 
+                            <th>Mensagem</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-contatos">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>&copy; 2025 Loja DeCastro. Todos os direitos reservados.</p>
+        <p><a href="administracao.html">Administração</a></p>
+    </footer>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', async () => {
+            const tabelaContatosBody = document.getElementById('tabela-contatos');
+
+            try {
+                const response = await fetch('http://localhost:3000/api/contatos');
+                const contatos = await response.json();
+
+                if (contatos.length > 0) {
+                    contatos.forEach(contato => {
+                        const row = `
+                            <tr>
+                                <td>${contato.nome}</td>
+                                <td>${contato.email}</td>
+                                <td>${contato.assunto || 'N/A'}</td> 
+                                <td>${contato.mensagem}</td>
+                                <td>${new Date(contato.dataEnvio || contato.createdAt).toLocaleDateString()}</td>
+                            </tr>
+                     `;
+                        tabelaContatosBody.innerHTML += row;
+                    });
+                } else {
+                    // COLSPAN CORRIGIDO PARA 5 COLUNAS (Nome, Email, Assunto, Mensagem, Data)
+                 tabelaContatosBody.innerHTML = '<tr><td colspan="5">Nenhuma mensagem de contato encontrada.</td></tr>';
+                }
+            } catch (error) {
+                console.error('Erro ao carregar contatos:', error);
+                tabelaContatosBody.innerHTML = '<tr><td colspan="5">Erro ao carregar mensagens. Tente novamente.</td></tr>';
+            }
+    }   );
+    </script>
+    
+</body>
+</html>

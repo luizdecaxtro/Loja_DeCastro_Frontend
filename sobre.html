@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre | DeCastro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos do corpo */
+        body {
+            background-color: #3e3e3e;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilos do cabeçalho */
+        .cabecalho {
+            background-color: #2e2e2e;
+            color: #ffb703;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-navegacao a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 2rem;
+        }
+        
+        /* Estilos da seção "Sobre" */
+        .secao-sobre {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .secao-sobre h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ffb703;
+        }
+        .container-sobre {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #4a4a4a;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+        #conteudo-sobre {
+            white-space: pre-wrap; /* Preserva quebras de linha e espaços */
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="logo-container">
+            <img src="logotipo2.jpg" alt="Logotipo DeCastro Produtos Digitais">
+        </div>
+        
+        <nav class="menu-navegacao">
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="contato.html">Contato</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="administracao.html">Administração</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="secao-sobre">
+            <h2>Sobre Nós</h2>
+            <div class="container-sobre">
+                <p id="conteudo-sobre">Carregando...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>&copy; 2025 Loja DeCastro. Todos os direitos reservados.</p>
+        <p><a href="administracao.html">Administração</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            // ----------------------------------------------------
+            // ADAPTAÇÃO PARA PRODUÇÃO:
+            // Este é o endereço base da sua API no ambiente de hospedagem (ex: Render).
+            const API_BASE_URL = 'http://PLACEHOLDER-SEU-URL-API.com.br';
+            const urlApiSobre = `${API_BASE_URL}/api/sobre`;
+            // ----------------------------------------------------
+
+            const conteudoSobre = document.getElementById('conteudo-sobre');
+            try {
+                // Chamada fetch atualizada para usar o novo URL
+                const response = await fetch(urlApiSobre);
+                const data = await response.json();
+                if (data && data.conteudo) {
+                    conteudoSobre.textContent = data.conteudo;
+                } else {
+                    conteudoSobre.textContent = 'Nenhum conteúdo disponível no momento.';
+                }
+            } catch (error) {
+                console.error('Erro ao carregar o conteúdo da página Sobre:', error);
+                conteudoSobre.textContent = 'Erro ao carregar o conteúdo.';
+            }
+        });
+    </script>
+
+</body>
+</html>

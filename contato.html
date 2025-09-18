@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | DeCastro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos do corpo */
+        body {
+            background-color: #3e3e3e;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Estilos do cabeçalho */
+        .cabecalho {
+            background-color: #2e2e2e;
+            color: #ffb703;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-navegacao a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 2rem;
+        }
+
+        /* Estilos da seção de contato */
+        .secao-contato {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .secao-contato h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ffb703;
+        }
+
+        /* Estilos do formulário de contato */
+        .container-contato {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #4a4a4a;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+        #form-contato {
+            display: grid;
+            gap: 1rem;
+        }
+        #form-contato label {
+            font-weight: bold;
+        }
+        #form-contato input, #form-contato textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #3e3e3e;
+            color: #ffffff;
+        }
+        #form-contato textarea {
+            resize: vertical;
+        }
+        #btn-enviar {
+            background-color: #ffb703;
+            color: #3e3e3e;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        #btn-enviar:hover {
+            background-color: #ff9f00;
+        }
+    </style>
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo-container">
+            <img src="logotipo2.jpg" alt="Logotipo DeCastro Produtos Digitais">
+        </div>
+        
+        <nav class="menu-navegacao">
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="contato.html">Contato</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="pesquisa.html">Pesquisa</a>
+            <a href="carrinho.html">Carrinho</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="secao-contato">
+            <h2>Entre em Contato</h2>
+            <div class="container-contato">
+                <form id="form-contato">
+                    <label for="nome-contato">Nome:</label>
+                    <input type="text" id="nome-contato" name="nome" required>
+
+                    <label for="email-contato">Email:</label>
+                    <input type="email" id="email-contato" name="email" required>
+
+                    <label for="assunto-contato">Assunto:</label>
+                    <input type="text" id="assunto-contato" name="assunto">
+
+                    <label for="mensagem-contato">Mensagem:</label>
+                    <textarea id="mensagem-contato" name="mensagem" rows="5" required></textarea>
+                    <button type="submit" id="btn-enviar">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <p>&copy; 2025 Loja DeCastro. Todos os direitos reservados.</p>
+        <p><a href="administracao.html">Administração</a></p>
+    </footer>
+
+    <script src="script-contatos.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --cor-principal: #4A3C34; /* Marrom escuro */
+    --cor-secundaria: #333333; /* Cinza escuro */
+    --cor-texto-claro: #f5f5f5;
+    --cor-destaque: #E8B48B;
+    --cor-botao-claro: #5D4A40;
+    --cor-link: #FFCC99;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-claro);
+}
+
+/* --- Cabeçalho e Navegação --- */
+.cabecalho {
+    background-color: var(--cor-secundaria);
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--cor-destaque);
+    flex-wrap: wrap;
+}
+
+.cabecalho h1 {
+    font-size: 1.8rem;
+    color: var(--cor-destaque);
+    margin-right: 2rem;
+}
+
+.menu-navegacao {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.menu-navegacao a {
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.menu-navegacao a:hover {
+    color: var(--cor-destaque);
+}
+
+/* --- Seção Principal (apenas na página inicial) --- */
+.secao-principal {
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.secao-principal h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--cor-destaque);
+}
+
+.secao-principal p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+.secao-principal .btn {
+    display: inline-block;
+    background-color: var(--cor-destaque);
+    color: var(--cor-secundaria);
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.secao-principal .btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- Seção de Produtos --- */
+/* Estilos para os cards de produtos */
+.secao-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 4 colunas em telas maiores */
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px; /* Limita a largura do grid */
+    margin: 0 auto; /* Centraliza o grid */
+}
+
+.produto-card {
+    background-color: #4a4a4a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.produto-card:hover {
+    transform: translateY(-5px);
+}
+
+.produto-card img {
+    max-width: 100%; /* Garante que a imagem não exceda a largura do card */
+    height: 200px;   /* Define uma altura fixa para todas as imagens */
+    object-fit: contain; /* Ajusta a imagem dentro do espaço sem cortar */
+    margin-bottom: 1rem;
+}
+
+.produto-card h3 {
+    font-size: 1.5rem;
+    color: #ffb703;
+    margin-bottom: 0.5rem;
+}
+
+.produto-card p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* --- Rodapé --- */
+.rodape {
+    background-color: var(--cor-principal);
+    padding: 2rem;
+    text-align: center;
+    border-top: 2px solid var(--cor-secundaria);
+}
+
+.rodape p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.rodape a {
+    color: var(--cor-link);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.rodape a:hover {
+    color: var(--cor-destaque);
+}
+/* Estilos da seção de pesquisa */
+.secao-pesquisa {
+    padding: 2rem 0;
+    text-align: center;
+}
+.container-pesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+#campo-pesquisa {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #5a5a5a;
+    color: #ffffff;
+}
+#btn-pesquisar {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffb703;
+    color: #3e3e3e;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* Estilos para o contêiner do tooltip */
+.tooltip-container {
+    position: relative; /* O tooltip será posicionado em relação a este contêiner */
+    display: inline-block;
+}
+
+/* Estilos para o texto do tooltip */
+.tooltip-container .tooltip-text {
+    visibility: hidden; /* Esconde o texto por padrão */
+    width: 150px; /* Largura do tooltip. Ajuste se precisar. */
+    background-color: #5a5a5a;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute; /* Posição absoluta em relação ao contêiner */
+    z-index: 1; /* Garante que o tooltip apareça sobre outros elementos */
+    bottom: 125%; /* Posição acima do botão */
+    left: 50%;
+    margin-left: -75px; /* Centraliza o tooltip */
+    opacity: 0;
+    transition: opacity 0.3s; /* Adiciona uma transição suave */
+}
+
+/* Mostra o texto do tooltip quando o mouse passa por cima do contêiner */
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Adiciona uma pequena seta no tooltip (opcional) */
+.tooltip-container .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Na parte de baixo do tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #5a5a5a transparent transparent transparent;
+}
