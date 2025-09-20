@@ -59,6 +59,42 @@ main {
     padding: 2rem;
 }
 
+/* Estilos para a página inicial */
+#banner-inicial {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#banner-inicial h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #964B00;
+}
+
+#banner-inicial p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #964B00;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #7a3a00;
+}
+
 /* Estilos Específicos para a Página de Produtos */
 .produtos-grid {
     display: grid;
@@ -84,8 +120,8 @@ main {
 
 .produto-card img {
     width: 100%;
-    height: 200px; /* Altura fixa para uniformidade */
-    object-fit: cover; /* Ajusta a imagem para cobrir a área sem distorcer */
+    height: 200px;
+    object-fit: cover;
 }
 
 .produto-card h3 {
@@ -105,12 +141,78 @@ main {
     margin: 10px 0;
 }
 
-.mensagem-carregamento, .mensagem-erro {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #888;
-    margin-top: 50px;
-    display: none; /* Escondido por padrão, será exibido pelo JS */
+/* Estilos para a página de contato */
+.contato-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contato-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.contato-form input,
+.contato-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.contato-form button {
+    background-color: #964B00;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.contato-form button:hover {
+    background-color: #7a3a00;
+}
+
+/* Estilos para a página de administração */
+#admin-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.admin-form input,
+.admin-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-form button {
+    background-color: #964B00;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 /* Rodapé */
@@ -128,12 +230,10 @@ footer {
         flex-direction: column;
         text-align: center;
     }
-
     nav ul {
         justify-content: center;
         margin-top: 10px;
     }
-
     .produtos-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
