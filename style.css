@@ -1,117 +1,111 @@
-/* Estilos Gerais */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --cor-principal: #4A3C34; /* Marrom escuro */
+    --cor-secundaria: #333333; /* Cinza escuro */
+    --cor-texto-claro: #f5f5f5;
+    --cor-destaque: #E8B48B;
+    --cor-botao-claro: #5D4A40;
+    --cor-link: #FFCC99;
 }
 
-header {
-    background-color: #964B00;
-    color: white;
-    padding: 1rem 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--cor-principal);
+    color: var(--cor-texto-claro);
+}
+
+/* --- Cabeçalho e Navegação --- */
+.cabecalho {
+    background-color: var(--cor-secundaria);
+    padding: 1rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    border-bottom: 2px solid var(--cor-destaque);
+    flex-wrap: wrap;
 }
 
-header .logo-container {
+.cabecalho h1 {
+    font-size: 1.8rem;
+    color: var(--cor-destaque);
+    margin-right: 2rem;
+}
+
+.menu-navegacao {
     display: flex;
-    align-items: center;
+    gap: 1.5rem;
 }
 
-header .logo-container img {
-    height: 50px;
-    margin-right: 15px;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-header p {
-    margin: 0;
-    font-size: 0.8rem;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-nav li a {
-    color: white;
+.menu-navegacao a {
+    color: var(--cor-texto-claro);
     text-decoration: none;
-    padding: 0 15px;
-    transition: color 0.3s;
+    font-weight: 400;
+    transition: color 0.3s ease;
 }
 
-nav li a:hover {
-    color: #ffd700;
+.menu-navegacao a:hover {
+    color: var(--cor-destaque);
 }
 
-main {
-    padding: 2rem;
-}
-
-/* Estilos para a página inicial */
-#banner-inicial {
+/* --- Seção Principal (apenas na página inicial) --- */
+.secao-principal {
     text-align: center;
-    padding: 4rem 2rem;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 5rem 2rem;
 }
 
-#banner-inicial h2 {
+.secao-principal h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #964B00;
+    color: var(--cor-destaque);
 }
 
-#banner-inicial p {
-    font-size: 1.2rem;
-    max-width: 600px;
+.secao-principal p {
+    font-size: 1.1rem;
+    max-width: 800px;
     margin: 0 auto 2rem;
+    line-height: 1.6;
 }
 
-.cta-button {
+.secao-principal .btn {
     display: inline-block;
-    background-color: #964B00;
-    color: white;
-    padding: 15px 30px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-secundaria);
+    padding: 0.8rem 2rem;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    transition: transform 0.3s ease;
 }
 
-.cta-button:hover {
-    background-color: #7a3a00;
+.secao-principal .btn:hover {
+    transform: scale(1.05);
 }
 
-/* Estilos Específicos para a Página de Produtos */
-.produtos-grid {
+/* --- Seção de Produtos --- */
+/* Estilos para os cards de produtos */
+.secao-produtos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 4 colunas em telas maiores */
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px; /* Limita a largura do grid */
+    margin: 0 auto; /* Centraliza o grid */
 }
 
 .produto-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #4a4a4a;
+    padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .produto-card:hover {
@@ -119,122 +113,117 @@ main {
 }
 
 .produto-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    max-width: 100%; /* Garante que a imagem não exceda a largura do card */
+    height: 200px;   /* Define uma altura fixa para todas as imagens */
+    object-fit: contain; /* Ajusta a imagem dentro do espaço sem cortar */
+    margin-bottom: 1rem;
 }
 
 .produto-card h3 {
-    font-size: 1.2rem;
-    margin: 10px 0;
+    font-size: 1.5rem;
+    color: #ffb703;
+    margin-bottom: 0.5rem;
 }
 
 .produto-card p {
-    font-size: 1rem;
-    color: #666;
-    padding: 0 15px;
-}
-
-.produto-card .preco {
+    font-size: 1.2rem;
+    color: #ffffff;
     font-weight: bold;
-    color: #964B00;
-    margin: 10px 0;
 }
 
-/* Estilos para a página de contato */
-.contato-form {
+/* --- Rodapé --- */
+.rodape {
+    background-color: var(--cor-principal);
+    padding: 2rem;
+    text-align: center;
+    border-top: 2px solid var(--cor-secundaria);
+}
+
+.rodape p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.rodape a {
+    color: var(--cor-link);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.rodape a:hover {
+    color: var(--cor-destaque);
+}
+/* Estilos da seção de pesquisa */
+.secao-pesquisa {
+    padding: 2rem 0;
+    text-align: center;
+}
+.container-pesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
     max-width: 600px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.contato-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-.contato-form input,
-.contato-form textarea {
+#campo-pesquisa {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 0.8rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #5a5a5a;
+    color: #ffffff;
 }
-
-.contato-form button {
-    background-color: #964B00;
-    color: white;
-    padding: 15px 20px;
+#btn-pesquisar {
+    padding: 0.8rem 1.5rem;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
+    background-color: #ffb703;
+    color: #3e3e3e;
     font-size: 1rem;
-}
-
-.contato-form button:hover {
-    background-color: #7a3a00;
-}
-
-/* Estilos para a página de administração */
-#admin-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.admin-form label {
-    display: block;
-    margin-bottom: 8px;
     font-weight: bold;
-}
-
-.admin-form input,
-.admin-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.admin-form button {
-    background-color: #964B00;
-    color: white;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+}
+/* Estilos para o contêiner do tooltip */
+.tooltip-container {
+    position: relative; /* O tooltip será posicionado em relação a este contêiner */
+    display: inline-block;
 }
 
-/* Rodapé */
-footer {
-    background-color: #333;
-    color: white;
+/* Estilos para o texto do tooltip */
+.tooltip-container .tooltip-text {
+    visibility: hidden; /* Esconde o texto por padrão */
+    width: 150px; /* Largura do tooltip. Ajuste se precisar. */
+    background-color: #5a5a5a;
+    color: #fff;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute; /* Posição absoluta em relação ao contêiner */
+    z-index: 1; /* Garante que o tooltip apareça sobre outros elementos */
+    bottom: 125%; /* Posição acima do botão */
+    left: 50%;
+    margin-left: -75px; /* Centraliza o tooltip */
+    opacity: 0;
+    transition: opacity 0.3s; /* Adiciona uma transição suave */
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-    nav ul {
-        justify-content: center;
-        margin-top: 10px;
-    }
-    .produtos-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
+/* Mostra o texto do tooltip quando o mouse passa por cima do contêiner */
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Adiciona uma pequena seta no tooltip (opcional) */
+.tooltip-container .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Na parte de baixo do tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #5a5a5a transparent transparent transparent;
 }
