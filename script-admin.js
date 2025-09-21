@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 alert('Conteúdo da página "Sobre" salvo com sucesso!');
             } else {
-                alert('Erro ao SALVAR o conteúdo.');
+                alert('Erro ao salvar o conteúdo.');
             }
         } catch (error) {
             console.error('Erro ao salvar o conteúdo:', error);
@@ -209,3 +209,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
