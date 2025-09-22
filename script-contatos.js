@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
-    // ADAPTAÇÃO PARA PRODUÇÃO:
-    // Este é o endereço base da sua API no ambiente de hospedagem (ex: Render).
-    // VOCÊ DEVE ATUALIZAR ESTA LINHA após o deploy do seu Backend.
-    // Exemplo: const API_BASE_URL = 'https://api.sua-loja.com.br';
-    // CORREÇÃO CRÍTICA: Insira a URL HTTPS COMPLETA do Render.
-    const API_BASE_URL = 'https://loja-decastro-backend.onrender.com';
+    // CORREÇÃO CRÍTICA: URL do Backend no Render
+    // SUBSTITUIR PELA SUA URL REAL DO RENDER
+    const API_BASE_URL = 'https://loja-decastro-backend.onrender.com'; 
     // ----------------------------------------------------
     
     // 1. Encontra o formulário e o botão
@@ -28,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. EXTRAÇÃO DE TODOS OS CAMPOS PADRONIZADOS
         const nome = document.getElementById('nome-contato').value;
         const email = document.getElementById('email-contato').value;
-        const assunto = document.getElementById('assunto-contato').value; 
+        const assunto = document.getElementById('assunto-contato').value; // 'assunto' está sendo coletado
         const mensagem = document.getElementById('mensagem-contato').value;
 
         try {
@@ -65,5 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnEnviar.textContent = 'Enviar Mensagem';
         }
     });
-
 });
+
+
+
