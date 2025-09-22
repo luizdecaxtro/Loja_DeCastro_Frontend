@@ -110,39 +110,62 @@
     </footer>
 
     <script>
+
+
+<script>
         
+        // CORREÇÃO CRÍTICA: USE A URL REAL DO SEU BACKEND NO RENDER
+        const API_BASE_URL = 'https://loja-decastro-backend.onrender.com';
+
         document.addEventListener('DOMContentLoaded', async () => {
             const tabelaContatosBody = document.getElementById('tabela-contatos');
 
+            // Limpa o conteúdo antes de tentar carregar (útil para o catch)
+            tabelaContatosBody.innerHTML = '<tr><td colspan="5">Carregando mensagens...</td></tr>'; 
+
             try {
-                const response = await fetch('http://localhost:3000/api/contatos');
+                // USA A URL CORRETA DO RENDER
+                const response = await fetch(`${API_BASE_URL}/api/contatos`);
+                
+                // CRÍTICO: Verifica se a resposta HTTP foi bem sucedida (status 200-299)
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                
                 const contatos = await response.json();
 
                 if (contatos.length > 0) {
+                    // Limpa a linha de "Carregando..."
+                    tabelaContatosBody.innerHTML = '';
+                    
                     contatos.forEach(contato => {
+                        const dataFormatada = new Date(contato.createdAt).toLocaleDateString();
+                        
                         const row = `
                             <tr>
                                 <td>${contato.nome}</td>
                                 <td>${contato.email}</td>
                                 <td>${contato.assunto}</td>
                                 <td>${contato.mensagem}</td>
-                                <td>${new Date(contato.dataEnvio || contato.createdAt).toLocaleDateString()}</td>
+                                <td>${dataFormatada}</td>
                             </tr>
-                     `;
+                       `;
                         tabelaContatosBody.innerHTML += row;
                     });
                 } else {
-                    // COLSPAN CORRIGIDO PARA 5 COLUNAS (Nome, Email, assunto, Mensagem, Data)
-                 tabelaContatosBody.innerHTML = '<tr><td colspan="5">Nenhuma mensagem de contato encontrada.</td></tr>';
+                    // Mostra mensagem se o array vier vazio
+                   tabelaContatosBody.innerHTML = '<tr><td colspan="5">Nenhuma mensagem de contato encontrada.</td></tr>';
                 }
             } catch (error) {
                 console.error('Erro ao carregar contatos:', error);
-                tabelaContatosBody.innerHTML = '<tr><td colspan="5">Erro ao carregar mensagens. Tente novamente.</td></tr>';
+                // Exibe a mensagem de erro se a requisição falhar (ex: Servidor do Render dormindo ou URL errada)
+                tabelaContatosBody.innerHTML = '<tr><td colspan="5">Erro ao carregar mensagens. Verifique se o servidor está ativo.</td></tr>';
             }
-    }   );
+        });
     </script>
-    
+         
 </body>
 
 </html>
+
 
