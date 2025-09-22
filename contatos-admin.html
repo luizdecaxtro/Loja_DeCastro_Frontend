@@ -92,6 +92,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>Email</th>
+                            <th>Assunto</th>
                             <th>Mensagem</th>
                             <th>Data</th>
                         </tr>
@@ -123,6 +124,7 @@
                             <tr>
                                 <td>${contato.nome}</td>
                                 <td>${contato.email}</td>
+                                <td>${contato.assunto}</td>
                                 <td>${contato.mensagem}</td>
                                 <td>${new Date(contato.dataEnvio || contato.createdAt).toLocaleDateString()}</td>
                             </tr>
@@ -130,7 +132,7 @@
                         tabelaContatosBody.innerHTML += row;
                     });
                 } else {
-                    // COLSPAN CORRIGIDO PARA 5 COLUNAS (Nome, Email, Mensagem, Data)
+                    // COLSPAN CORRIGIDO PARA 5 COLUNAS (Nome, Email, assunto, Mensagem, Data)
                  tabelaContatosBody.innerHTML = '<tr><td colspan="5">Nenhuma mensagem de contato encontrada.</td></tr>';
                 }
             } catch (error) {
@@ -143,3 +145,4 @@
 </body>
 
 </html>
+
