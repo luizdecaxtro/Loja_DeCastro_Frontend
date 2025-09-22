@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Este é o endereço base da sua API no ambiente de hospedagem (ex: Render).
     // VOCÊ DEVE ATUALIZAR ESTA LINHA após o deploy do seu Backend.
     // Exemplo: const API_BASE_URL = 'https://api.sua-loja.com.br';
-    const API_BASE_URL = 'http://PLACEHOLDER-SEU-URL-API.com.br';
+    // CORREÇÃO CRÍTICA: Insira a URL HTTPS COMPLETA do Render.
+    const API_BASE_URL = 'https://loja-decastro-backend.onrender.com';
     // ----------------------------------------------------
     
     // 1. Encontra o formulário e o botão
@@ -64,4 +65,5 @@ document.addEventListener('DOMContentLoaded', () => {
             btnEnviar.textContent = 'Enviar Mensagem';
         }
     });
+
 });
