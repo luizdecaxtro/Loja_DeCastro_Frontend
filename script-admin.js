@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Este é o endereço base da sua API no ambiente de hospedagem (ex: Render).
     // VOCÊ DEVE ATUALIZAR ESTA LINHA após o deploy do seu Backend.
     // Exemplo: const API_BASE_URL = 'https://api.sua-loja.com.br';
-    const API_BASE_URL = 'http://PLACEHOLDER-SEU-URL-API.com.br';
-    // ----------------------------------------------------
+    const API_BASE_URL = 'https://loja-decastro-backend.onrender.com';
+    const LISTAR_CONTATOS = `${API_BASE_URL}/api/contatos`; // Correto
     
     // Variável base para as rotas da API de produtos
     const urlApiProdutos = `${API_BASE_URL}/api/produtos`;
@@ -209,4 +209,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
 
