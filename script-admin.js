@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // VOCÊ DEVE ATUALIZAR ESTA LINHA após o deploy do seu Backend.
     // Exemplo: const API_BASE_URL = 'https://api.sua-loja.com.br';
     const API_BASE_URL = 'https://loja-decastro-backend.onrender.com';
-    const LISTAR_CONTATOS = `${API_BASE_URL}/api/contatos`; // Correto
+    const LISTAR_CONTATOS = `${API_BASE_URL}/api/contatos`;
     
     // Variável base para as rotas da API de produtos
     const urlApiProdutos = `${API_BASE_URL}/api/produtos`;
@@ -57,8 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // FUNÇÃO: CARREGAR PRODUTOS ADMIN
     async function carregarProdutosAdmin() {
         try {
-            // ADAPTAÇÃO 1/7: Usando urlApiProdutos
-            const response = await fetch(urlApiProdutos); 
+            const response = await fetch(urlApiProdutos);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -70,7 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${produto.id}</td>
                         <td>${produto.nome}</td>
                         <td>R$ ${produto.preco.toFixed(2).replace('.', ',')}</td>
-                        <td><img src="${API_BASE_URL}${produto.imagem}" alt="Imagem do produto"></td>
+                        
+                        <td><img src="${produto.imagem}" alt="Imagem do produto" style="width:100px;"></td>
+
                         <td>
                             <div class="botoes-acao">
                                 <button class="btn-editar" data-id="${produto.id}">Editar</button>
@@ -91,8 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function excluirProduto(id) {
         if (confirm(`Tem certeza que deseja excluir o produto com ID ${id}?`)) {
             try {
-                // ADAPTAÇÃO 2/7: Usando urlApiProdutos
-                const response = await fetch(`${urlApiProdutos}/${id}`, { 
+                const response = await fetch(`${urlApiProdutos}/${id}`, {
                     method: 'DELETE'
                 });
                 if (response.status === 204) {
@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const id = produtoIdInput.value;
         const method = id ? 'PUT' : 'POST';
-        // ADAPTAÇÃO 3/7 e 4/7: Usando urlApiProdutos
         const url = id ? `${urlApiProdutos}/${id}` : urlApiProdutos; 
 
         try {
@@ -153,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
             excluirProduto(id);
         } else if (target.classList.contains('btn-editar')) {
             try {
-                // ADAPTAÇÃO 5/7: Usando urlApiProdutos para buscar o produto
                 const response = await fetch(`${urlApiProdutos}/${id}`); 
                 const produto = await response.json();
                 
@@ -171,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // FUNÇÃO: CARREGAR CONTEÚDO SOBRE
     async function carregarConteudoSobre() {
         try {
-            // ADAPTAÇÃO 6/7: Usando urlApiSobre
             const response = await fetch(urlApiSobre);
             const data = await response.json();
             if (data && data.conteudo) {
@@ -188,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const conteudo = conteudoSobreAdmin.value;
 
         try {
-            // ADAPTAÇÃO 7/7: Usando urlApiSobre para salvar o conteúdo
             const response = await fetch(urlApiSobre, { 
                 method: 'POST',
                 headers: {
@@ -209,5 +205,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-
-
